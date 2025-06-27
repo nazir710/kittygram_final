@@ -17,7 +17,10 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
+ALLOWED_HOSTS = ['158.160.5.219', '127.0.0.1', 'localhost', 'kitty-gramm-practicum.publicvm.com']
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
+
+print('ALLOWED_HOSTS2=', ALLOWED_HOSTS)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
