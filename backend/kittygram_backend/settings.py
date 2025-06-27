@@ -3,6 +3,8 @@ import os
 
 from pathlib import Path
 
+from decouple import config
+from decouple import Csv
 from dotenv import load_dotenv
 
 
@@ -11,11 +13,11 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = os.environ.get('DEBUG') == 'True'
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['158.160.5.219', '127.0.0.1', 'localhost', 'kitty-gramm-practicum.publicvm.com']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -107,8 +109,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'collected_static'
 
 MEDIA_URL = '/media/'
-
-#MEDIA_ROOT = BASE_DIR.parent / 'media'
 
 MEDIA_ROOT = '/media'
 
