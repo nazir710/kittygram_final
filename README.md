@@ -21,7 +21,7 @@ Actions;
 - DevOps: Docker, GitLab
 
 
-Описание CI/CD:
+## Описание CI/CD:
 Для деплоя проекта на сервер используется GitHub Actions. Деплой происходит в следующем порядке:
 - загрузка проекта в GitHub
 - загрузка образов на Ваш аккаунт в DockerHub
@@ -36,7 +36,7 @@ Actions;
 - USER - имя пользователя на сервере
 
 
-Команды локального развертывания с Докером:
+## Команды локального развертывания с Докером:
 1) Клонирование репозитория: git clone https://github.com/nazir710/kittygram_final.git
 2) Перейдите в директорию проекта: cd kittygram_final
 3) Cоздайте виртуальное окружение: python -m venv venv
@@ -53,23 +53,23 @@ Actions;
 - DEBUG=False 
 - ALLOWED_HOSTS=<'IP-адрес сервера, 127.0.0.1, localhost, домен'>
 
-Подъем контейнеров в Докере
+## Подъем контейнеров в Докере
 Находясь в папке /kittygram_final при активированном виртуальном окружении выполните команду: 
 - docker-compose up
 
-Подготовка базы данных
+## Подготовка базы данных
 1) Выполните миграции: 
 - docker exec kittygram_backend-1 python manage.py makemigrations
 - docker exec kittygram_backend-1 python manage.py migrate 
 2) Создайте суперпользователя:
 - docker exec kittygram_backend-1 python manage.py createsuperuser
 
-Сборка статики
+## Сборка статики
 В новом терминале в папке /kittygram_final при активированном виртуальном окружении и запущенных контейнерах выполните команды:
 - docker compose exec backend python manage.py collectstatic
 - docker compose exec backend cp -r /app/collected_static/. /backend_static/static/
 
-Запуск сервера
+## Запуск сервера
 1) Подготовьте сервер к загрузке проекта:
 Установите на сервер пакетный менеджер и утилиту для создания виртуального окружения:
 - sudo apt install python3-pip python3-venv -y
