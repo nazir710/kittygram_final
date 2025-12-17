@@ -13,11 +13,13 @@ Kittygram — социальная сеть для обмена фотограф
 Actions;
 - уведомление пользователя с помощью Telegram-бота после завершения деплоя.
 
+
 ## Стек:
 - Frontend: HTML, CSS, React
 - Backend: Python, Django
 - База данных: PostgreSQL
 - DevOps: Docker, GitLab
+
 
 ## Описание CI/CD
 Для деплоя проекта на сервер используется GitHub Actions.
@@ -27,6 +29,7 @@ Actions;
 - загрузка образов из DockerHub на сервер и сборка контейнеров.
 
 Для настройки деплоя необходимо настроить следующие секреты в GitHub Actions:
+
 DOCKER_PASSWORD - пароль от аккаунта в DockerHub
 DOCKER_USERNAME - имя пользователя в DockerHub
 HOST - IP-адрес вашего сервера
@@ -36,6 +39,7 @@ SSH_PASSPHRASE - значение для доступа к серверу
 USER - имя пользователя на сервере
 
 ## Команды локального развертывания с Докером
+
 Клонирование репозитория: git clone https://github.com/nazir710/kittygram_final.git
 Перейдите в директорию проекта: cd kittygram_final
 Cоздайте виртуальное окружение: python -m venv venv
@@ -52,23 +56,31 @@ SECRET_KEY=<секретный код Джанго>
 DEBUG=False
 ALLOWED_HOSTS=<'IP-адрес сервера, 127.0.0.1, localhost, домен'>
 
+
 ## Подъем контейнеров в Докере 
 
-Находясь в папке /kittygram_final при активированном виртуальном окружении выполните команду:
+Находясь в папке /kittygram_final при активированном виртуальном окружении выполните команду: docker-compose up
 
-docker-compose up
-Подготовка базы данных
+
+## Подготовка базы данных
 
 Выполните миграции:
-docker exec kittygram_backend-1 python manage.py makemigrations
-docker exec kittygram_backend-1 python manage.py migrate
-Создайте суперпользователя:
-docker exec kittygram_backend-1 python manage.py createsuperuser
-Сборка статики В новом терминале в папке /foodgram при активированном виртуальном окружении и запущенных контейнерах выполните команды:
+- docker exec kittygram_backend-1 python manage.py makemigrations
+- docker exec kittygram_backend-1 python manage.py migrate
 
-docker compose exec backend python manage.py collectstatic
-docker compose exec backend cp -r /app/collected_static/. /backend_static/static/
-Запуск сервера
+Создайте суперпользователя:
+- docker exec kittygram_backend-1 python manage.py createsuperuser
+
+
+## Сборка статики
+
+В новом терминале в папке /kittygram_final при активированном виртуальном окружении и запущенных контейнерах выполните команды:
+
+- docker compose exec backend python manage.py collectstatic
+- docker compose exec backend cp -r /app/collected_static/. /backend_static/static/
+
+
+## Запуск сервера
 
 ## Подготовьте сервер к загрузке проекта
 
