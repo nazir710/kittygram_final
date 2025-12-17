@@ -71,19 +71,19 @@ Actions;
 
 ## Запуск сервера
 1) Подготовьте сервер к загрузке проекта:
-Установите на сервер пакетный менеджер и утилиту для создания виртуального окружения:
+a) Установите на сервер пакетный менеджер и утилиту для создания виртуального окружения:
 - sudo apt install python3-pip python3-venv -y
-Установите docker и docker compose:
+b) Установите docker и docker compose:
 - sudo apt update
 - sudo apt install curl
 - curl -fSL https://get.docker.com -o get-docker.sh
 - sudo sh ./get-docker.sh
 - sudo apt install docker-compose-plugin
-Создайте папку проекта:
+c) Создайте папку проекта:
 - mkdir foodgram
-Перейдите в папку проекта: 
+d) Перейдите в папку проекта: 
 - cd kittygram
-Создайте файл окружения и заполните его:
+e) Создайте файл окружения и заполните его:
 - touch .env
 - nano .env
 2) При активировнном виртуальном окружении выполните команду: git push
